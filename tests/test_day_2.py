@@ -17,3 +17,17 @@ class TestDay2(BaseTest):
         day_2 = Day2(real_input)
 
         self.print_result(day_2, part=1)
+
+    def test_day_2_part_2_test_input(self):
+        test_input = self.get_test_input()
+        day_2_test = Day2(test_input)
+
+        result = day_2_test.get_result(part=2)
+
+        assert result == 12
+
+    def test_day_2_part_2(self):
+        real_input = self.get_input()
+        day_2 = Day2(real_input)
+
+        self.print_result(day_2, part=2)
