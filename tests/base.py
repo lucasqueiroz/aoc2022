@@ -17,5 +17,5 @@ class BaseTest:
     def get_test_input(self):
         return self._get_file_lines(f"day-{self.DAY}-test")
 
-    def print_result(self, day: BaseDay):
-        print(f"[DAY {self.DAY}] {day.result}")
+    def print_result(self, day: BaseDay, part: int):
+        print(f"[DAY {self.DAY} - PART {part}] {day.get_result(part=part)}")
