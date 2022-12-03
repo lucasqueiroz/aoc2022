@@ -1,0 +1,33 @@
+from src.day_{day_number} import Day{day_number}
+from tests.base import BaseTest
+
+class TestDay{day_number}(BaseTest):
+    DAY = {day_number}
+
+    def test_day_{day_number}_part_1_test_input(self):
+        test_input = self.get_test_input()
+        day_{day_number}_test = Day{day_number}(test_input)
+
+        result = day_{day_number}_test.get_result(part=1)
+
+        # assert result == 0
+
+    def test_day_{day_number}_part_1(self):
+        real_input = self.get_input()
+        day_{day_number} = Day{day_number}(real_input)
+
+        self.print_result(day_{day_number}, part=1)
+
+    def test_day_{day_number}_part_2_test_input(self):
+        test_input = self.get_test_input()
+        day_{day_number}_test = Day{day_number}(test_input)
+
+        result = day_{day_number}_test.get_result(part=2)
+
+        # assert result == 0
+
+    def test_day_{day_number}_part_2(self):
+        real_input = self.get_input()
+        day_{day_number} = Day{day_number}(real_input)
+
+        self.print_result(day_{day_number}, part=2)

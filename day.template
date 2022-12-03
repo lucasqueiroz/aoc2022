@@ -1,0 +1,15 @@
+from src.base import BaseDay
+
+
+class Day{day_number}(BaseDay):
+    def run(self, part: int):
+        if part == 1:
+            self.run_part_1()
+        elif part == 2:
+            self.run_part_2()
+
+    def run_part_1(self):
+        pass
+
+    def run_part_2(self):
+        pass
