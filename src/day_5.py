@@ -9,10 +9,11 @@ from typing import Dict, List
 class Stack:
     crates: List[str]
 
-    def take_n(self, n: int) -> List[str]:
+    def take_n(self, n: int, reverse: bool) -> List[str]:
         n_crates = self.crates[:n]
         self.crates = self.crates[n:]
-        n_crates.reverse()
+        if reverse:
+            n_crates.reverse()
         return n_crates
 
     def add_crate(self, crate: str):
@@ -31,15 +32,18 @@ class Day5(BaseDay):
             self.run_part_2()
 
     def run_part_1(self):
+        self.result = self._get_top_crates(True)
+
+    def run_part_2(self):
+        self.result = self._get_top_crates(False)
+
+    def _get_top_crates(self, reverse: bool) -> str:
         self._create_stacks()
-        self._move_crates()
+        self._move_crates(reverse)
         s = ""
         for i in self.stacks:
             s += self.stacks[i].crates[0].replace("[", "").replace("]", "")
-        self.result = s
-
-    def run_part_2(self):
-        pass
+        return s
 
     def _create_stacks(self) -> Dict[int, Stack]:
         stacks = {}
@@ -58,12 +62,12 @@ class Day5(BaseDay):
                 stack.add_crate(crate)
         self.stacks = stacks
 
-    def _move_crates(self):
+    def _move_crates(self, reverse: bool):
         stacks = self.stacks
         for line in self.input:
             if not line.startswith("move"):
                 continue
             line = line.replace("\n", "")
             n, from_stack, to_stack = (re.search(r"move (\d+) from (\d+) to (\d+)", line)).groups()
-            crates = stacks[int(from_stack)].take_n(int(n))
+            crates = stacks[int(from_stack)].take_n(int(n), reverse)
             stacks[int(to_stack)].add_crates(crates)
