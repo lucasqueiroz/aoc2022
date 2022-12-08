@@ -10,22 +10,22 @@ class Day6(BaseDay):
             self.run_part_2()
 
     def run_part_1(self):
-        self.result = self._get_first_marker_indexes()
+        self.result = self._get_first_marker_indexes(n_chars=4)
 
     def run_part_2(self):
-        pass
+        self.result = self._get_first_marker_indexes(n_chars=14)
 
-    def _get_first_marker_indexes(self) -> List[int]:
+    def _get_first_marker_indexes(self, n_chars) -> List[int]:
         indexes = []
         for line in self.input:
             print(line)
             line = line.strip()
-            last_four_chars = ""
+            last_n_chars = ""
             for i, c in enumerate(line):
-                if len(last_four_chars) == 4:
-                    last_four_chars = last_four_chars[1:]
-                last_four_chars += c
-                if len(last_four_chars) == len(set(last_four_chars)) == 4:
+                if len(last_n_chars) == n_chars:
+                    last_n_chars = last_n_chars[1:]
+                last_n_chars += c
+                if len(last_n_chars) == len(set(last_n_chars)) == n_chars:
                     indexes.append(i + 1)
                     break
         return indexes
