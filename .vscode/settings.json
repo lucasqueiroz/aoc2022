@@ -1,0 +1,29 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "task.allowAutomaticTasks": "on",
+    "restoreTerminals.terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "name": "zsh",
+                    "commands": [
+                        ". `poetry env info -p`",
+                        "clear"
+                    ]
+                },
+                {
+                    "name": "IPython",
+                    "commands": [
+                        ". `poetry env info -p`",
+                        "clear",
+                        "ipython --no-autoindent --InteractiveShellApp.exec_lines= --InteractiveShellApp.exec_lines='%load_ext autoreload' --InteractiveShellApp.exec_lines='%autoreload 2'"
+                    ]
+                }
+            ]
+        }
+    ]
+}
